@@ -1,0 +1,303 @@
+/**
+ * Force Sensitivity Detector - Stylesheet
+ * 
+ * @package     IPS\forcesensitivity
+ * @author      jimstratus
+ * @copyright   2026
+ * @license     MIT
+ */
+
+/* ==========================================================================
+   Force Sensitivity Badge
+   ========================================================================== */
+
+.fsBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
+}
+
+.fsBadge_icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fsBadge_label {
+    white-space: nowrap;
+}
+
+/* Sensitive Badge */
+.fsBadge_sensitive {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+    color: #87ceeb;
+    border: 1px solid #4a90d9;
+}
+
+/* Blind Badge */
+.fsBadge_blind {
+    background: linear-gradient(135deg, #3d3d3d 0%, #5a5a5a 100%);
+    color: #b0b0b0;
+    border: 1px solid #707070;
+}
+
+/* ==========================================================================
+   Badge Styles - Simple
+   ========================================================================== */
+
+.fsBadge_simple {
+    background: transparent;
+    border: none;
+}
+
+.fsBadge_simple.fsBadge_sensitive {
+    background: #1e3a5f;
+    color: #87ceeb;
+}
+
+.fsBadge_simple.fsBadge_blind {
+    background: #3d3d3d;
+    color: #b0b0b0;
+}
+
+/* ==========================================================================
+   Badge Styles - Glow
+   ========================================================================== */
+
+.fsBadge_glow.fsBadge_sensitive {
+    box-shadow: 
+        0 0 10px rgba(74, 144, 217, 0.5),
+        0 0 20px rgba(74, 144, 217, 0.3),
+        0 0 30px rgba(74, 144, 217, 0.1);
+}
+
+.fsBadge_glow.fsBadge_blind {
+    box-shadow: 
+        0 0 10px rgba(112, 112, 112, 0.3),
+        0 0 20px rgba(112, 112, 112, 0.2);
+}
+
+/* ==========================================================================
+   Badge Styles - Animated
+   ========================================================================== */
+
+.fsBadge_animated.fsBadge_sensitive {
+    animation: fsPulse 2s ease-in-out infinite;
+}
+
+@keyframes fsPulse {
+    0%, 100% {
+        box-shadow: 
+            0 0 5px rgba(74, 144, 217, 0.3),
+            0 0 10px rgba(74, 144, 217, 0.2);
+    }
+    50% {
+        box-shadow: 
+            0 0 15px rgba(74, 144, 217, 0.6),
+            0 0 30px rgba(74, 144, 217, 0.4),
+            0 0 45px rgba(74, 144, 217, 0.2);
+    }
+}
+
+.fsBadge_animated.fsBadge_sensitive .fsBadge_icon {
+    animation: fsIconPulse 2s ease-in-out infinite;
+}
+
+@keyframes fsIconPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+/* ==========================================================================
+   Large Badge (Profile)
+   ========================================================================== */
+
+.fsBadge_large {
+    flex-direction: column;
+    padding: 1.5rem 2rem;
+    border-radius: 0.5rem;
+}
+
+.fsBadge_large .fsBadge_icon {
+    margin-bottom: 0.5rem;
+}
+
+.fsBadge_large .fsBadge_label {
+    font-size: 1rem;
+}
+
+/* ==========================================================================
+   Post Indicator
+   ========================================================================== */
+
+.fsIndicator {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    font-size: 0.625rem;
+    margin-left: 0.25rem;
+    cursor: help;
+    transition: all 0.2s ease;
+}
+
+.fsIndicator_sensitive {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+    color: #87ceeb;
+    box-shadow: 0 0 5px rgba(74, 144, 217, 0.3);
+}
+
+.fsIndicator_sensitive:hover {
+    box-shadow: 0 0 10px rgba(74, 144, 217, 0.5);
+    transform: scale(1.1);
+}
+
+.fsIndicator_blind {
+    background: #3d3d3d;
+    color: #707070;
+}
+
+.fsIndicator_blind:hover {
+    background: #4a4a4a;
+}
+
+/* ==========================================================================
+   Admin Panel Styles
+   ========================================================================== */
+
+.fsStats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.fsStats_item {
+    background: #f5f5f5;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.fsStats_value {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.fsStats_value--sensitive {
+    color: #4a90d9;
+}
+
+.fsStats_value--blind {
+    color: #707070;
+}
+
+.fsStats_label {
+    font-size: 0.75rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   Modifier Badge Colors
+   ========================================================================== */
+
+.fsModifier_positive {
+    color: #28a745;
+}
+
+.fsModifier_negative {
+    color: #dc3545;
+}
+
+/* ==========================================================================
+   Probability Bar
+   ========================================================================== */
+
+.fsProbability {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.fsProbability_bar {
+    flex: 1;
+    height: 4px;
+    background: #e9ecef;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.fsProbability_fill {
+    height: 100%;
+    background: linear-gradient(90deg, #28a745 0%, #ffc107 50%, #dc3545 100%);
+    background-size: 200% 100%;
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+.fsProbability_value {
+    min-width: 3rem;
+    text-align: right;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+
+@media (max-width: 767px) {
+    .fsBadge_large {
+        padding: 1rem 1.5rem;
+    }
+    
+    .fsBadge_large .fsBadge_icon i {
+        font-size: 2rem !important;
+    }
+    
+    .fsStats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ==========================================================================
+   Dark Mode Support
+   ========================================================================== */
+
+[data-colorscheme="dark"] .fsBadge_sensitive,
+.ipsApp_dark .fsBadge_sensitive {
+    background: linear-gradient(135deg, #0d1f33 0%, #1a3a5c 100%);
+}
+
+[data-colorscheme="dark"] .fsBadge_blind,
+.ipsApp_dark .fsBadge_blind {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+}
+
+[data-colorscheme="dark"] .fsStats_item,
+.ipsApp_dark .fsStats_item {
+    background: #2d2d2d;
+}
+
+[data-colorscheme="dark"] .fsProbability_bar,
+.ipsApp_dark .fsProbability_bar {
+    background: #3d3d3d;
+}

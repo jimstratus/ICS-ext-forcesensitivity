@@ -1,0 +1,10 @@
+{
+    "application_title": "Force Sensitivity Detector",
+    "app_author": "jimstratus",
+    "app_directory": "forcesensitivity",
+    "app_update_check": "",
+    "app_website": "https://github.com/jimstratus/forcesensitivity",
+    "app_version": "1.0.0",
+    "app_long_version": "100000",
+    "app_requires_php": "7.4.0"
+}

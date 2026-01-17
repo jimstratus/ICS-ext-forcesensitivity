@@ -1,0 +1,9 @@
+{
+    "hooks": [
+        {
+            "class": "forcesensitivity_hook_memberCreate",
+            "type": "C",
+            "class_file": "hooks/memberCreate.php"
+        }
+    ]
+}

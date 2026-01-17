@@ -1,0 +1,78 @@
+[
+    {
+        "key": "fs_detection_enabled",
+        "default": "1"
+    },
+    {
+        "key": "fs_base_probability",
+        "default": "0.05"
+    },
+    {
+        "key": "fs_min_probability",
+        "default": "0.01"
+    },
+    {
+        "key": "fs_max_probability",
+        "default": "0.50"
+    },
+    {
+        "key": "fs_target_ratio",
+        "default": "0.10"
+    },
+    {
+        "key": "fs_ratio_enforcement",
+        "default": "soft"
+    },
+    {
+        "key": "fs_ratio_window",
+        "default": "100"
+    },
+    {
+        "key": "fs_auto_adjust",
+        "default": "1"
+    },
+    {
+        "key": "fs_admin_override",
+        "default": "1"
+    },
+    {
+        "key": "fs_reroll_enabled",
+        "default": "1"
+    },
+    {
+        "key": "fs_reroll_cooldown",
+        "default": "86400"
+    },
+    {
+        "key": "fs_bulk_operations",
+        "default": "1"
+    },
+    {
+        "key": "fs_show_badge",
+        "default": "1"
+    },
+    {
+        "key": "fs_badge_style",
+        "default": "glow"
+    },
+    {
+        "key": "fs_show_in_posts",
+        "default": "1"
+    },
+    {
+        "key": "fs_sensitive_label",
+        "default": "Force Sensitive"
+    },
+    {
+        "key": "fs_blind_label",
+        "default": "Force Blind"
+    },
+    {
+        "key": "fs_log_retention",
+        "default": "0"
+    },
+    {
+        "key": "fs_profile_field_id",
+        "default": "0"
+    }
+]

@@ -1,0 +1,28 @@
+{{!
+    Force Sensitivity - Profile Badge Template
+    
+    @package     IPS\forcesensitivity
+    @subpackage  templates
+    @author      jimstratus
+    @copyright   2026
+    @license     MIT
+}}
+
+{{if $status}}
+<div class="fsBadge fsBadge_{$badgeStyle} {{if $status->is_force_sensitive}}fsBadge_sensitive{{else}}fsBadge_blind{{endif}}">
+    <span class="fsBadge_icon">
+        {{if $status->is_force_sensitive}}
+        <i class="fa fa-bolt"></i>
+        {{else}}
+        <i class="fa fa-ban"></i>
+        {{endif}}
+    </span>
+    <span class="fsBadge_label">
+        {{if $status->is_force_sensitive}}
+        {setting="fs_sensitive_label" default="{lang='fs_status_sensitive'}"}
+        {{else}}
+        {setting="fs_blind_label" default="{lang='fs_status_blind'}"}
+        {{endif}}
+    </span>
+</div>
+{{endif}}

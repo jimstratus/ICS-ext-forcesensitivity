@@ -1,0 +1,100 @@
+{{!
+    Force Sensitivity - Log Details Modal Template
+    
+    @package     IPS\forcesensitivity
+    @subpackage  templates
+    @author      jimstratus
+    @copyright   2026
+    @license     MIT
+}}
+
+<div class="ipsBox">
+    <h2 class="ipsBox_header">
+        <i class="fa fa-info-circle"></i> {lang="fs_log_details"}
+    </h2>
+    
+    <table class="ipsTable ipsTable_zebra">
+        <tbody>
+            <tr>
+                <th style="width: 30%">{lang="fs_log_timestamp"}</th>
+                <td>{datetime="$log->timestamp"}</td>
+            </tr>
+            <tr>
+                <th>{lang="fs_log_member_id"}</th>
+                <td>
+                    {{if $member}}
+                    <a href="{$member->acpUrl()}">{$member->name}</a>
+                    {{else}}
+                    <span class="ipsType_light">{lang="fs_deleted_member"}</span>
+                    {{endif}}
+                </td>
+            </tr>
+            <tr>
+                <th>{lang="fs_log_action"}</th>
+                <td>
+                    {{if $log->action == 'detection'}}
+                    <span class="ipsBadge ipsBadge_style2">{lang="fs_log_action_detection"}</span>
+                    {{elseif $log->action == 'admin_override'}}
+                    <span class="ipsBadge ipsBadge_style3">{lang="fs_log_action_admin_override"}</span>
+                    {{elseif $log->action == 'reroll'}}
+                    <span class="ipsBadge ipsBadge_style4">{lang="fs_log_action_reroll"}</span>
+                    {{elseif $log->action == 'bulk_operation'}}
+                    <span class="ipsBadge ipsBadge_style5">{lang="fs_log_action_bulk_operation"}</span>
+                    {{else}}
+                    <span class="ipsBadge">{$log->action}</span>
+                    {{endif}}
+                </td>
+            </tr>
+            <tr>
+                <th>{lang="fs_log_old_value"}</th>
+                <td>
+                    {{if $log->old_value === null}}
+                    <span class="ipsType_light">{lang="fs_status_unknown"}</span>
+                    {{elseif $log->old_value}}
+                    <span class="ipsType_positive">{lang="fs_status_sensitive"}</span>
+                    {{else}}
+                    <span class="ipsType_negative">{lang="fs_status_blind"}</span>
+                    {{endif}}
+                </td>
+            </tr>
+            <tr>
+                <th>{lang="fs_log_new_value"}</th>
+                <td>
+                    {{if $log->new_value}}
+                    <span class="ipsType_positive">{lang="fs_status_sensitive"}</span>
+                    {{else}}
+                    <span class="ipsType_negative">{lang="fs_status_blind"}</span>
+                    {{endif}}
+                </td>
+            </tr>
+            <tr>
+                <th>{lang="fs_log_performed_by"}</th>
+                <td>
+                    {{if $performer}}
+                    <a href="{$performer->acpUrl()}">{$performer->name}</a>
+                    {{else}}
+                    <span class="ipsType_light">{lang="fs_system"}</span>
+                    {{endif}}
+                </td>
+            </tr>
+            <tr>
+                <th>{lang="fs_log_ip_address"}</th>
+                <td>
+                    {{if $log->ip_address}}
+                    <code>{$log->ip_address}</code>
+                    {{else}}
+                    <span class="ipsType_light">N/A</span>
+                    {{endif}}
+                </td>
+            </tr>
+            {{if $log->details}}
+            <tr>
+                <th>{lang="fs_log_details"}</th>
+                <td>
+                    <pre class="ipsCode">{$log->details|json_encode:JSON_PRETTY_PRINT}</pre>
+                </td>
+            </tr>
+            {{endif}}
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,25 @@
+{{!
+    Force Sensitivity - Modifier Form Template
+    
+    @package     IPS\forcesensitivity
+    @subpackage  templates
+    @author      jimstratus
+    @copyright   2026
+    @license     MIT
+}}
+
+<div class="acpFormWrapper">
+    <h1 class="ipsType_pageTitle">
+        {{if $modifier->id}}
+        {lang="fs_edit_modifier"}
+        {{else}}
+        {lang="fs_add_modifier"}
+        {{endif}}
+    </h1>
+    
+    <div class="ipsBox ipsMargin_top">
+        <div class="ipsBox_container">
+            {$form|raw}
+        </div>
+    </div>
+</div>

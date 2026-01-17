@@ -1,0 +1,40 @@
+{{!
+    Force Sensitivity - Audit Logs Template
+    
+    @package     IPS\forcesensitivity
+    @subpackage  templates
+    @author      jimstratus
+    @copyright   2026
+    @license     MIT
+}}
+
+<div class="acpFormWrapper">
+    <h1 class="ipsType_pageTitle">{lang="fs_logs_title"}</h1>
+    
+    <!-- Export/Prune Actions -->
+    <div class="ipsButtonBar ipsMargin_bottom">
+        <ul class="ipsToolList ipsToolList_horizontal">
+            <li>
+                <a href="{$exportCsvUrl}" class="ipsButton ipsButton_small ipsButton_light">
+                    <i class="fa fa-download"></i> {lang="fs_export_csv"}
+                </a>
+            </li>
+            <li>
+                <a href="{$exportJsonUrl}" class="ipsButton ipsButton_small ipsButton_light">
+                    <i class="fa fa-download"></i> {lang="fs_export_json"}
+                </a>
+            </li>
+            <li>
+                <a href="{$pruneUrl}" class="ipsButton ipsButton_small ipsButton_negative" data-confirm>
+                    <i class="fa fa-trash"></i> {lang="fs_prune_logs"}
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="ipsBox">
+        <div class="ipsBox_container">
+            {$table|raw}
+        </div>
+    </div>
+</div>

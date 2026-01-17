@@ -1,0 +1,16 @@
+{
+    "extensions": [
+        {
+            "class": "ForceSensitivity",
+            "app": "core",
+            "extension": "Profile",
+            "filename": "extensions/core/Profile/ForceSensitivity.php"
+        },
+        {
+            "class": "ForceSensitivity", 
+            "app": "core",
+            "extension": "MemberFilter",
+            "filename": "extensions/core/MemberFilter/ForceSensitivity.php"
+        }
+    ]
+}

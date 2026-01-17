@@ -1,0 +1,21 @@
+{{!
+    Force Sensitivity - Post Indicator Template
+    
+    @package     IPS\forcesensitivity
+    @subpackage  templates
+    @author      jimstratus
+    @copyright   2026
+    @license     MIT
+}}
+
+{{if $status}}
+<span class="fsIndicator {{if $status->is_force_sensitive}}fsIndicator_sensitive{{else}}fsIndicator_blind{{endif}}" 
+      title="{{if $status->is_force_sensitive}}{setting="fs_sensitive_label" default="{lang='fs_status_sensitive'}"}{else}{setting="fs_blind_label" default="{lang='fs_status_blind'}"}{endif}}"
+      data-ipsTooltip>
+    {{if $status->is_force_sensitive}}
+    <i class="fa fa-bolt"></i>
+    {{else}}
+    <i class="fa fa-ban"></i>
+    {{endif}}
+</span>
+{{endif}}

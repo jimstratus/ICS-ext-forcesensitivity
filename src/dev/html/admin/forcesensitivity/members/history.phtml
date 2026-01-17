@@ -1,0 +1,114 @@
+{{!
+    Force Sensitivity - Member History Template
+    
+    @package     IPS\forcesensitivity
+    @subpackage  templates
+    @author      jimstratus
+    @copyright   2026
+    @license     MIT
+}}
+
+<div class="ipsBox">
+    <h2 class="ipsBox_header">
+        <i class="fa fa-history"></i> {lang="fs_member_history"}
+    </h2>
+    
+    {{if $member}}
+    <div class="ipsBox_container ipsPadding">
+        <div class="ipsColumns">
+            <div class="ipsColumn ipsColumn_narrow">
+                {$member->photo|raw}
+            </div>
+            <div class="ipsColumn ipsColumn_fluid">
+                <h3 class="ipsType_large">
+                    <a href="{$member->acpUrl()}">{$member->name}</a>
+                </h3>
+                {{if $currentStatus}}
+                <p>
+                    <strong>{lang="fs_is_force_sensitive"}:</strong>
+                    {{if $currentStatus->is_force_sensitive}}
+                    <span class="ipsBadge ipsBadge_positive">{lang="fs_status_sensitive"}</span>
+                    {{else}}
+                    <span class="ipsBadge ipsBadge_negative">{lang="fs_status_blind"}</span>
+                    {{endif}}
+                </p>
+                <p>
+                    <strong>{lang="fs_detection_date"}:</strong>
+                    {datetime="$currentStatus->detection_date"}
+                </p>
+                <p>
+                    <strong>{lang="fs_detection_method"}:</strong>
+                    {$currentStatus->detection_method}
+                </p>
+                {{else}}
+                <p class="ipsType_warning">{lang="fs_status_unknown"}</p>
+                {{endif}}
+            </div>
+        </div>
+    </div>
+    {{endif}}
+    
+    {{if count($logs)}}
+    <table class="ipsTable ipsTable_zebra">
+        <thead>
+            <tr>
+                <th>{lang="fs_log_timestamp"}</th>
+                <th>{lang="fs_log_action"}</th>
+                <th>{lang="fs_log_old_value"}</th>
+                <th>{lang="fs_log_new_value"}</th>
+                <th>{lang="fs_log_performed_by"}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{foreach $logs as $log}}
+            <tr>
+                <td>{datetime="$log->timestamp"}</td>
+                <td>
+                    {{if $log->action == 'detection'}}
+                    <span class="ipsBadge ipsBadge_style2">{lang="fs_log_action_detection"}</span>
+                    {{elseif $log->action == 'admin_override'}}
+                    <span class="ipsBadge ipsBadge_style3">{lang="fs_log_action_admin_override"}</span>
+                    {{elseif $log->action == 'reroll'}}
+                    <span class="ipsBadge ipsBadge_style4">{lang="fs_log_action_reroll"}</span>
+                    {{else}}
+                    <span class="ipsBadge">{$log->action}</span>
+                    {{endif}}
+                </td>
+                <td>
+                    {{if $log->old_value === null}}
+                    <span class="ipsType_light">{lang="fs_status_unknown"}</span>
+                    {{elseif $log->old_value}}
+                    <span class="ipsType_positive">{lang="fs_status_sensitive"}</span>
+                    {{else}}
+                    <span class="ipsType_negative">{lang="fs_status_blind"}</span>
+                    {{endif}}
+                </td>
+                <td>
+                    {{if $log->new_value}}
+                    <span class="ipsType_positive">{lang="fs_status_sensitive"}</span>
+                    {{else}}
+                    <span class="ipsType_negative">{lang="fs_status_blind"}</span>
+                    {{endif}}
+                </td>
+                <td>
+                    {{if $log->performed_by}}
+                        {{$performer = \IPS\Member::load($log->performed_by)}}
+                        {{if $performer->member_id}}
+                        <a href="{$performer->acpUrl()}">{$performer->name}</a>
+                        {{else}}
+                        <span class="ipsType_light">{lang="fs_deleted_member"}</span>
+                        {{endif}}
+                    {{else}}
+                    <span class="ipsType_light">{lang="fs_system"}</span>
+                    {{endif}}
+                </td>
+            </tr>
+            {{endforeach}}
+        </tbody>
+    </table>
+    {{else}}
+    <p class="ipsType_center ipsPadding ipsType_light">
+        <i class="fa fa-info-circle"></i> No history available for this member.
+    </p>
+    {{endif}}
+</div>

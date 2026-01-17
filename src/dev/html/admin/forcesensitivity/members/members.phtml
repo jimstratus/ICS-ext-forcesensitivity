@@ -1,0 +1,48 @@
+{{!
+    Force Sensitivity - Admin Members Table Template
+    
+    @package     IPS\forcesensitivity
+    @subpackage  templates
+    @author      jimstratus
+    @copyright   2026
+    @license     MIT
+}}
+
+<div class="acpFormWrapper">
+    <h1 class="ipsType_pageTitle">{lang="fs_members_title"}</h1>
+    
+    <!-- Quick Stats -->
+    <div class="ipsGrid ipsMargin_top ipsMargin_bottom">
+        <div class="ipsGrid_span4 ipsWidget">
+            <div class="ipsWidget_inner">
+                <h3 class="ipsWidget_title">{lang="fs_dashboard_total"}</h3>
+                <div class="ipsType_large ipsType_center">
+                    {$stats['total']}
+                </div>
+            </div>
+        </div>
+        <div class="ipsGrid_span4 ipsWidget">
+            <div class="ipsWidget_inner">
+                <h3 class="ipsWidget_title">{lang="fs_dashboard_sensitive"}</h3>
+                <div class="ipsType_large ipsType_center ipsType_success">
+                    {$stats['sensitive']}
+                </div>
+            </div>
+        </div>
+        <div class="ipsGrid_span4 ipsWidget">
+            <div class="ipsWidget_inner">
+                <h3 class="ipsWidget_title">{lang="fs_dashboard_blind"}</h3>
+                <div class="ipsType_large ipsType_center ipsType_negative">
+                    {$stats['blind']}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Members Table -->
+    <div class="ipsBox">
+        <div class="ipsBox_container">
+            {$table|raw}
+        </div>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+{
+    "modules": {
+        "admin": [
+            {
+                "key": "forcesensitivity",
+                "default_controller": "settings",
+                "protected": false
+            }
+        ],
+        "front": []
+    }
+}

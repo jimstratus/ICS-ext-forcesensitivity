@@ -1,0 +1,47 @@
+{{!
+    Force Sensitivity - Profile Tab Template
+    
+    @package     IPS\forcesensitivity
+    @subpackage  templates
+    @author      jimstratus
+    @copyright   2026
+    @license     MIT
+}}
+
+<div class="ipsBox ipsSpacer_top">
+    <h2 class="ipsBox_header">
+        <i class="fa fa-star-wars"></i> {lang="fs_dashboard_title"}
+    </h2>
+    
+    <div class="ipsBox_container ipsPadding">
+        {{if $status}}
+        <div class="ipsType_center">
+            <div class="fsBadge fsBadge_large fsBadge_{$badgeStyle} {{if $status->is_force_sensitive}}fsBadge_sensitive{{else}}fsBadge_blind{{endif}}">
+                <span class="fsBadge_icon">
+                    {{if $status->is_force_sensitive}}
+                    <i class="fa fa-bolt fa-3x"></i>
+                    {{else}}
+                    <i class="fa fa-ban fa-3x"></i>
+                    {{endif}}
+                </span>
+                <span class="fsBadge_label ipsType_large">
+                    {{if $status->is_force_sensitive}}
+                    {setting="fs_sensitive_label" default="{lang='fs_status_sensitive'}"}
+                    {{else}}
+                    {setting="fs_blind_label" default="{lang='fs_status_blind'}"}
+                    {{endif}}
+                </span>
+            </div>
+            
+            <p class="ipsType_light ipsSpacer_top">
+                {lang="fs_detection_date"}: {datetime="$status->detection_date"}
+            </p>
+        </div>
+        {{else}}
+        <div class="ipsType_center ipsType_light">
+            <i class="fa fa-question-circle fa-3x"></i>
+            <p class="ipsSpacer_top">{lang="fs_status_unknown"}</p>
+        </div>
+        {{endif}}
+    </div>
+</div>
