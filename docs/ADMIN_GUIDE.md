@@ -1,6 +1,7 @@
 # Administrator Guide
 
-> Force Sensitivity Detector - ICS v4.7.20 Extension
+> Force Sensitivity Detector - ICS v4.7.20 Extension  
+> **Version**: 1.0.0 | **Last Updated**: January 18, 2026
 
 ---
 
@@ -50,9 +51,12 @@
 
 - [ ] Configure base probability settings
 - [ ] Set desired community ratio
-- [ ] Choose badge display style
+- [ ] Choose badge display style (simple, glow, or animated)
+- [ ] Customize labels (Force Sensitive / Force Blind)
 - [ ] Review admin permissions
 - [ ] Test with a test registration
+
+> **Note**: The extension is now at v1.0.0 with all core features implemented. See CHANGELOG.md for the complete feature list.
 
 ---
 
@@ -533,7 +537,9 @@ Set retention period:
 | `Enter` | View selected |
 | `Delete` | Remove status (if permitted) |
 
-### API Endpoints
+### API Endpoints (Planned v1.1.0)
+
+> REST API endpoints are planned for version 1.1.0.
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|

@@ -2,6 +2,8 @@
 
 Thank you for your interest in contributing to the Force Sensitivity Detector extension! This document provides guidelines for contributing to the project.
 
+**Current Version**: v1.0.0 (Released January 17, 2026)
+
 ---
 
 ## Code of Conduct

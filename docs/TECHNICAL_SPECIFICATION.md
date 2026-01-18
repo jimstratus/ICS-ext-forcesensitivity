@@ -1,6 +1,7 @@
 # Technical Specification
 
-> Force Sensitivity Detector - ICS v4.7.20 Extension
+> Force Sensitivity Detector - ICS v4.7.20 Extension  
+> **Version**: 1.0.0 | **Last Updated**: January 18, 2026
 
 ---
 
@@ -113,31 +114,27 @@ function rollForForceSensitivity(float $probability): bool
 
 ### 3.1 Registration Hook
 
-**File**: `hooks/memberRegistration.php`
+**File**: `hooks/memberCreate.php`
 
 ```php
-class forcesensitivity_hook_memberRegistration extends _HOOK_CLASS_
+class forcesensitivity_hook_memberCreate extends _HOOK_CLASS_
 {
     /**
-     * Process registration completion
+     * Create a new member
      */
-    public function process()
+    public function save()
     {
         // Call parent first
-        $result = call_user_func_array('parent::process', func_get_args());
+        parent::save();
         
-        // Check if detection is enabled
-        if (!\IPS\Settings::i()->fs_detection_enabled) {
-            return $result;
+        // Only process new members (not updates)
+        if ($this->_new) {
+            // Check if detection is enabled
+            if (\IPS\Settings::i()->fs_detection_enabled) {
+                // Trigger detection for the new member
+                \IPS\forcesensitivity\ForceSensitivity\Detector::detect($this, 'registration');
+            }
         }
-        
-        // Get the newly created member
-        $member = \IPS\Member::loggedIn();
-        
-        // Trigger detection
-        \IPS\forcesensitivity\Detector::detect($member, 'registration');
-        
-        return $result;
     }
 }
 ```
@@ -892,17 +889,21 @@ class _members extends \IPS\Api\Controller
 
 ## 11. Testing Strategy
 
-### 11.1 Unit Tests
+> **Note**: Unit and integration tests are planned for v1.1.0. Current testing is manual.
+
+### 11.1 Unit Tests (Planned v1.1.0)
 - Probability calculation accuracy
 - Ratio adjustment algorithms
 - Modifier stacking
 
-### 11.2 Integration Tests
+### 11.2 Integration Tests (Planned v1.1.0)
 - Registration hook triggering
 - Admin operations
 - Profile field updates
 
-### 11.3 E2E Tests
-- Full registration flow
+### 11.3 Manual Testing (Current)
+- Full registration flow verification
 - ACP settings changes
 - Bulk operations
+- All admin modules tested
+- CSRF protection verified

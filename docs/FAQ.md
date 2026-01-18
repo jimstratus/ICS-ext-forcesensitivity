@@ -1,6 +1,7 @@
 # Frequently Asked Questions
 
-> Force Sensitivity Detector - ICS v4.7.20 Extension
+> Force Sensitivity Detector - ICS v4.7.20 Extension  
+> **Version**: 1.0.0 | **Last Updated**: January 18, 2026
 
 ---
 
@@ -17,6 +18,15 @@ No. This is a fan-created extension for community gamification. Star Wars and re
 ### What ICS versions are supported?
 
 Currently, the extension is designed for **Invision Community Suite v4.7.20**. Future versions may support newer ICS releases.
+
+### What version is currently available?
+
+**v1.0.0** (Released January 17, 2026) - This includes all core features:
+- Automatic detection on registration
+- Full admin interface (settings, members, modifiers, logs)
+- Three badge styles (simple, glow, animated)
+- Complete audit logging with export
+- Bulk operations support
 
 ### Is this a free or paid extension?
 
@@ -182,10 +192,12 @@ Absolutely! Configure custom labels in Settings:
 
 ### Does this integrate with the ICS points system?
 
-Not in v1.0. Planned for future versions:
+Not in v1.0.0. Planned for future versions:
 - Award points on detection
 - Spend points for reroll
 - FS-only rewards
+
+See [CHANGELOG.md](../CHANGELOG.md) for planned v1.1.0 features.
 
 ---
 
