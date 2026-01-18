@@ -38,30 +38,44 @@ forcesensitivity/
 ├── Application.php                 # Main application class
 ├── extensions/
 │   └── core/
-│       └── MemberForm.php          # Profile field integration
+│       ├── Profile/
+│       │   └── ForceSensitivity.php    # Profile badge extension
+│       └── MemberFilter/
+│           └── ForceSensitivity.php    # ACP member filter
 ├── hooks/
-│   └── memberRegistration.php      # Registration detection hook
+│   └── memberCreate.php            # Registration detection hook
 ├── modules/
 │   └── admin/
-│       ├── settings.php            # Admin settings module
-│       ├── members.php             # Member management module
-│       └── logs.php                # Audit log viewer
+│       └── forcesensitivity/
+│           ├── settings.php        # Admin settings module
+│           ├── members.php         # Member management module
+│           ├── modifiers.php       # Probability modifiers CRUD
+│           └── logs.php            # Audit log viewer
 ├── sources/
 │   ├── ForceSensitivity/
 │   │   ├── Detector.php            # Core detection logic
-│   │   ├── Probability.php         # Probability calculations
+│   │   ├── Status.php              # Status ActiveRecord model
+│   │   ├── Modifier.php            # Probability modifier model
 │   │   └── RatioManager.php        # Community ratio management
 │   └── Log/
-│       └── Entry.php               # Log entry model
+│       └── Entry.php               # Audit log entry model
 ├── dev/
-│   ├── lang.php                    # Language strings
+│   ├── lang.php                    # Language strings (150+ keys)
+│   ├── jslang.php                  # JavaScript language strings
 │   ├── settings.json               # ACP settings definitions
-│   └── jslang.php                  # JavaScript language strings
+│   ├── css/
+│   │   └── forcesensitivity.css    # Badge and indicator styles
+│   └── html/                       # Template files
+│       ├── admin/                  # Admin templates
+│       └── front/                  # Front-end templates
 ├── data/
-│   └── defaults.json               # Default configuration values
+│   ├── application.json            # App metadata
+│   ├── extensions.json             # Extension definitions
+│   ├── hooks.json                  # Hook definitions
+│   └── modules.json                # Module definitions
 └── setup/
-    ├── install.php                 # Installation routine
-    └── uninstall.php               # Cleanup routine
+    ├── install.php                 # Database installation
+    └── uninstall.php               # Clean removal
 ```
 
 ---
@@ -345,34 +359,34 @@ CREATE TABLE `{prefix}forcesensitivity_modifiers` (
 ## 🔧 Development Roadmap
 
 ### Phase 1: Core Foundation ✅
-- [ ] Application structure setup
-- [ ] Database schema implementation
-- [ ] Core detection logic
-- [ ] Registration hook integration
+- [x] Application structure setup
+- [x] Database schema implementation
+- [x] Core detection logic
+- [x] Registration hook integration
 
-### Phase 2: Admin Interface
-- [ ] Settings page implementation
-- [ ] Member management interface
-- [ ] Bulk operations
-- [ ] Audit log viewer
+### Phase 2: Admin Interface ✅
+- [x] Settings page implementation
+- [x] Member management interface
+- [x] Bulk operations
+- [x] Audit log viewer
 
-### Phase 3: Display & Integration
-- [ ] Profile field integration
-- [ ] Badge/flair system
-- [ ] Post indicator display
-- [ ] Theme compatibility
+### Phase 3: Display & Integration ✅
+- [x] Profile field integration
+- [x] Badge/flair system (simple, glow, animated styles)
+- [x] Post indicator display
+- [x] Theme compatibility (dark mode support)
 
-### Phase 4: Advanced Features
-- [ ] Event-based probability modifiers
-- [ ] Achievement integration
-- [ ] API endpoints
-- [ ] Webhook notifications
+### Phase 4: Advanced Features ✅
+- [x] Event-based probability modifiers
+- [x] Modifier management (member, group, global, event types)
+- [ ] API endpoints (planned for v1.1)
+- [ ] Webhook notifications (planned for v1.1)
 
-### Phase 5: Polish & Documentation
-- [ ] Comprehensive documentation
-- [ ] Unit tests
-- [ ] Performance optimization
-- [ ] Localization support
+### Phase 5: Polish & Documentation ✅
+- [x] Comprehensive documentation
+- [x] GitHub issue templates
+- [x] Localization support (150+ language strings)
+- [ ] Unit tests (planned for v1.1)
 
 ---
 
